@@ -5,10 +5,12 @@ namespace Account
 {
     class TestProgram
     {
-        private static int currentChoice = 0;
+        
 
         static void Main(string[] args)
         {
+            int currentChoice = 0;
+
             Console.WriteLine("This program is to be used for the testing " +
                 "of the Account class and it's derived classes.");
 
@@ -46,7 +48,7 @@ namespace Account
                         TestSavingsAccount();
                         break;
                     case 3:
-                        //TestCheckingAccount();
+                        TestCheckingAccount();
                         break;
                     case 4:
                         //TestLoan();
@@ -153,7 +155,7 @@ namespace Account
                     default:
                         Console.WriteLine();
                         Console.Clear();
-                        Console.WriteLine($"{currentChoice} is not option" +
+                        Console.WriteLine($"{currentNumber} is not option" +
                             $" please try again.");
                         Console.WriteLine();
                         break;
@@ -263,7 +265,119 @@ namespace Account
                     default:
                         Console.WriteLine();
                         Console.Clear();
-                        Console.WriteLine($"{currentChoice} is not option " +
+                        Console.WriteLine($"{currentNumber} is not option " +
+                            $"please try again.");
+                        Console.WriteLine();
+                        break;
+                }
+
+            }
+        }
+
+        public static void TestCheckingAccount()
+        {
+            CheckingAccount checkingAccount = null;
+
+            decimal initalAmount;
+            decimal feeAmount;
+
+            bool passBool = false;
+            int currentNumber = 0;
+
+
+            Console.Clear();
+
+            while (!passBool)
+            {
+                try
+                {
+                    Console.Write("How much currency would you like to have " +
+                                  "to start the checking account: ");
+
+                    initalAmount = decimal.Parse(Console.ReadLine());
+
+                    Console.Write("What is the fee for the " +
+                        "account: ");
+
+                    feeAmount = decimal.Parse(Console.ReadLine());
+
+                    checkingAccount =
+                        new CheckingAccount(initalAmount, feeAmount);
+                    passBool = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine(ex);
+                    Console.WriteLine();
+                }
+            }
+
+
+            Console.Clear();
+
+            while (currentNumber != 5)
+            {
+
+                Console.WriteLine("What would you like to do with the " +
+                    "saving account:");
+                Console.WriteLine("1: Deposit Money (credit method).");
+                Console.WriteLine("2: Withdraw Money (debit method).");
+                Console.WriteLine("3: See account balance.");
+                Console.WriteLine("4: See interest for the account.");
+                Console.WriteLine("5: Back to main menu.");
+                Console.Write("Please enter a number: ");
+
+                try
+                {
+                    currentNumber = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter number.");
+                    Console.WriteLine();
+                    continue;
+                }
+
+                switch (currentNumber)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.Write("How much would you like to add to " +
+                            "your account: ");
+                        savingsAccount.Credit(int.Parse(Console.ReadLine()));
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.Write("How much would you like to withdraw " +
+                            "to your account: ");
+                        savingsAccount.Debit(int.Parse(Console.ReadLine()));
+                        break;
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine($"Your current balance " +
+                            $"is: {savingsAccount.getBalance()}");
+                        Console.WriteLine();
+                        break;
+                    case 4:
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine($"The calculated interest " +
+                            $"for the account is:" +
+                            $" {savingsAccount.CalculateInterest()}");
+                        Console.WriteLine();
+                        break;
+                    case 5:
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Back to main menu:");
+                        Console.WriteLine();
+                        break;
+                    default:
+                        Console.WriteLine();
+                        Console.Clear();
+                        Console.WriteLine($"{currentNumber} is not option " +
                             $"please try again.");
                         Console.WriteLine();
                         break;
