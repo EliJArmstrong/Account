@@ -51,7 +51,7 @@ namespace Account
                         TestCheckingAccount();
                         break;
                     case 4:
-                        //TestLoan();
+                        TestLoan();
                         break;
                     case 5:
                         Console.Clear();
@@ -385,6 +385,117 @@ namespace Account
 
             }
         }
+
+        public static void TestLoan()
+        {
+            Loan loan = null;
+            decimal initalAmount;
+            decimal interestRate;
+
+            bool passBool = false;
+            int currentNumber = 0;
+
+            Console.Clear();
+
+            while (!passBool)
+            {
+                try
+                {
+                    Console.Write("How much currency would you like to borrow: ");
+
+                    initalAmount = decimal.Parse(Console.ReadLine());
+
+                    Console.Write("What is the interest rate for the " +
+                        "borrowed sum: ");
+
+                    interestRate = decimal.Parse(Console.ReadLine());
+
+                    loan =
+                        new Loan(initalAmount, interestRate);
+                    passBool = true;
+                }
+                catch (Exception ex)
+                {
+                    Console.Clear();
+                    Console.WriteLine(ex);
+                    Console.WriteLine();
+                }
+            }
+
+
+            Console.Clear();
+
+            while (currentNumber != 5)
+            {
+
+                Console.WriteLine("What would you like to do with the " +
+                    "Loan account:");
+                Console.WriteLine("1: Borrow more money.");
+                Console.WriteLine("2: Payback some or all the borrowed ammount.");
+                Console.WriteLine("3: See loan balance.");
+                Console.WriteLine("4: See interest sum for the account.");
+                Console.WriteLine("5: Back to main menu.");
+                Console.Write("Please enter a number: ");
+
+                try
+                {
+                    currentNumber = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter number.");
+                    Console.WriteLine();
+                    continue;
+                }
+
+                switch (currentNumber)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.Write("How much more would you like to " +
+                            "borrow: ");
+                        loan.Credit(int.Parse(Console.ReadLine()));
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.Write("How much would you like to payback " +
+                            "to your loan: ");
+                        loan.Debit(int.Parse(Console.ReadLine()));
+                        break;
+                    case 3:
+                        Console.Clear();
+                        Console.WriteLine($"Your current loan balance " +
+                            $"is: {loan.getBalance()}");
+                        Console.WriteLine();
+                        break;
+                    case 4:
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine($"The calculated interest " +
+                            $"for the account is:" +
+                            $" {loan.CalculateInterest()}");
+                        Console.WriteLine();
+                        break;
+                    case 5:
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Back to main menu:");
+                        Console.WriteLine();
+                        break;
+                    default:
+                        Console.WriteLine();
+                        Console.Clear();
+                        Console.WriteLine($"{currentNumber} is not option " +
+                            $"please try again.");
+                        Console.WriteLine();
+                        break;
+                }
+
+            }
+
+        }
+
 
     }
 }
