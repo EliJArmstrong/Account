@@ -5,13 +5,15 @@ namespace Account
 {
     class CheckingAccount : Account
     {
-        decimal fee;
+        private decimal fee;
+
+        public decimal Fee { get => fee; private set => fee = value; }
 
         public CheckingAccount(decimal initialBalance, decimal fee) : base(initialBalance)
         {
             if (fee >= 0)
             {
-                this.fee = fee;
+                this.Fee = fee;
             }
             else
             {
@@ -21,17 +23,14 @@ namespace Account
 
         public new void Credit(decimal addMoney)
         {
-            if (base.Debit(fee))
-            {
                 base.Credit(addMoney);
-            }
         }
 
         public new void Debit(decimal subtractMoney)
         {
             if (base.Debit(subtractMoney))
             {
-                base.Debit(fee);
+                base.Debit(Fee);
             }
         }
     }

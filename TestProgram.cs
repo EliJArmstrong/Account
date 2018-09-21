@@ -320,11 +320,11 @@ namespace Account
             {
 
                 Console.WriteLine("What would you like to do with the " +
-                    "saving account:");
+                    "Checking Account:");
                 Console.WriteLine("1: Deposit Money (credit method).");
                 Console.WriteLine("2: Withdraw Money (debit method).");
                 Console.WriteLine("3: See account balance.");
-                Console.WriteLine("4: See interest for the account.");
+                Console.WriteLine("4: See fee for the account.");
                 Console.WriteLine("5: Back to main menu.");
                 Console.Write("Please enter a number: ");
 
@@ -346,26 +346,26 @@ namespace Account
                         Console.Clear();
                         Console.Write("How much would you like to add to " +
                             "your account: ");
-                        savingsAccount.Credit(int.Parse(Console.ReadLine()));
+                        checkingAccount.Credit(int.Parse(Console.ReadLine()));
                         break;
                     case 2:
                         Console.Clear();
                         Console.Write("How much would you like to withdraw " +
                             "to your account: ");
-                        savingsAccount.Debit(int.Parse(Console.ReadLine()));
+                        checkingAccount.Debit(int.Parse(Console.ReadLine()));
                         break;
                     case 3:
                         Console.Clear();
-                        Console.WriteLine($"Your current balance " +
-                            $"is: {savingsAccount.getBalance()}");
+                        Console.WriteLine($"Your account balance " +
+                            $"is: {checkingAccount.getBalance()}");
                         Console.WriteLine();
                         break;
                     case 4:
                         Console.Clear();
                         Console.WriteLine();
-                        Console.WriteLine($"The calculated interest " +
+                        Console.WriteLine($"The fee " +
                             $"for the account is:" +
-                            $" {savingsAccount.CalculateInterest()}");
+                            $" {checkingAccount.Fee}");
                         Console.WriteLine();
                         break;
                     case 5:
