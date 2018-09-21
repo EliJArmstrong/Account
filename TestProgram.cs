@@ -1,13 +1,32 @@
-﻿using System;
+﻿// <author>Eli Armstrong</author>
+// <remarks>I pledge my word of honor that I have abided
+// by the CSN Academic Integrity Policy while completing
+// this assignment.</remarks>
+// <file>TestProgram.cs</file>
+// <date>2018-09-20</date>
+// <summary> This program is to be used for the testing "of the Account class
+// and it's derived classes. </summary> 
+// <remarks>Time taken to develop, write, test and debug
+// solution. About 3.5 hours. </remarks>
 
+using System;
 
+// ----------------------------------------------------------------------------
+// The Name Space for Account.
+// ----------------------------------------------------------------------------
 namespace Account
 {
+    /// -----------------------------------------------------------------------
+    /// <summary>The TestProgram class.</summary>
+    /// -----------------------------------------------------------------------
     class TestProgram
     {
+        /// -------------------------------------------------------------------
+        /// <summary>Main entry-point for this test application.</summary>
+        /// -------------------------------------------------------------------
         static void Main(string[] args)
         {
-            int currentChoice = 0;
+            int currentChoice = 0; // Tracks the users choice.
 
             Console.WriteLine("This program is to be used for the testing " +
                 "of the Account class and it's derived classes.");
@@ -20,9 +39,12 @@ namespace Account
             }
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is to test the base Account class.</summary>
+        /// -------------------------------------------------------------------
         public static void TestRegularAccount()
         {
-            Account account = null;
+            Account account = null; // Holds the users account.
             
             account = CreateAccount();
 
@@ -31,9 +53,13 @@ namespace Account
             RegularAccountMenu(account);
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is to test the Savings Account class.
+        /// </summary>
+        /// -------------------------------------------------------------------
         public static void TestSavingsAccount()
         {
-            SavingsAccount savingsAccount = null;
+            SavingsAccount savingsAccount = null; // Users savings account.
 
             Console.Clear();
 
@@ -45,9 +71,14 @@ namespace Account
 
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is to test the Checking Account class.
+        /// </summary>
+        /// -------------------------------------------------------------------
         public static void TestCheckingAccount()
         {
-            CheckingAccount checkingAccount = null;
+            // holds users checking account
+            CheckingAccount checkingAccount = null; 
             
             Console.Clear();
 
@@ -59,23 +90,32 @@ namespace Account
             
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is to test the Loan class.
+        /// </summary>
+        /// -------------------------------------------------------------------
         public static void TestLoan()
         {
-            Loan loan = null;
+            Loan loan = null; // Holds the users loan.
             
             Console.Clear();
 
             loan = CreateLoan();
 
             Console.Clear();
-
-            
-
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is the main menu of choices for to test the
+        /// Account class and it's derived classes.</summary>
+        /// 
+        /// <returns>Returns an int that is the users choice given a menu
+        /// </returns>
+        /// -------------------------------------------------------------------
         private static int MainMenu()
         {
-            int returnInt;
+            int returnInt; // The return int representing the user choice.
+
             try
             {
                 Console.WriteLine("Menu Choose an account type (1-5):");
@@ -96,6 +136,14 @@ namespace Account
             return returnInt;
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method will call a function based on the users choice
+        /// from the MainMenu function.</summary>
+        /// 
+        /// <param name="functionNumber">The number to be used in a switch 
+        /// statement to call a function base on the users choice from the 
+        /// MainMenu function.</param>
+        /// -------------------------------------------------------------------
         private static void FunctionCall(int functionNumber)
         {
             switch (functionNumber)
@@ -127,16 +175,22 @@ namespace Account
             }
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method creates an Account based on the initial amount 
+        /// asked by this method.</summary>
+        /// 
+        /// <returns>An Account class with a initial amount set by the user.
+        /// </returns>
+        /// -------------------------------------------------------------------
         private static Account CreateAccount()
         {
-
-            Account account = null;
+            Account account = null; // An Account to be created and returned.
+            // A bool to be triggered in case of any Exceptions are called.
+            bool passBool = false;  
 
             Console.Clear();
             Console.Write("How much currency would you like to have " +
                 "to start the regular account: ");
-
-            bool passBool = false;
 
             while (!passBool)
             {
