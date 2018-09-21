@@ -248,9 +248,15 @@ namespace Account
         }
 
         /// -------------------------------------------------------------------
-        /// <summary>This method takes in a account and a number and proforms 
-        /// an operation .</summary>
+        /// <summary>This method takes in a account and a number and preforms 
+        /// an operation using the account methods</summary>
         ///
+        /// <param name="account">The account object to preform the operation 
+        /// on</param>
+        /// 
+        /// <param name="currentNumber">The number revived from 
+        /// the RegularAccountMenu that relates to a operation from the Account
+        /// menu.</param>
         /// -------------------------------------------------------------------
         private static void AccountOperation( Account account, int currentNumber )
         {
@@ -289,6 +295,14 @@ namespace Account
             }
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method creates a Saving Account object with user 
+        /// entered initial money amount and interest rate.</summary>
+        /// 
+        /// <returns>An SavingAccount object with a initial amount and interest
+        /// rate set by the user.
+        /// </returns>
+        /// -------------------------------------------------------------------
         private static SavingsAccount CreateSavingsAccount()
         {
             SavingsAccount savingsAccount = null;
@@ -325,6 +339,13 @@ namespace Account
             return savingsAccount;
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is the menu for the Savings Account Class.
+        /// </summary>
+        /// 
+        /// <param name="savingsAccount">The account that will be affected by 
+        /// the menu</param>
+        /// -------------------------------------------------------------------
         private static void SavingAccountMenu(SavingsAccount savingsAccount)
         {
             int currentNumber = 0;
@@ -354,6 +375,17 @@ namespace Account
             }
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method takes in a savings account and a number and 
+        /// preforms an operation using the saving account methods</summary>
+        ///
+        /// <param name="savingsAccount">The savings account object to preform 
+        /// the operation on</param>
+        /// 
+        /// <param name="currentNumber">The number revived from 
+        /// the SavingsAccountMenu that relates to a operation from the Savings
+        /// Account menu.</param>
+        /// -------------------------------------------------------------------
         private static void SavingsAccountOpterations(SavingsAccount savingsAccount, int currentNumber)
         {
             switch (currentNumber)
@@ -399,6 +431,14 @@ namespace Account
             }
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method creates a Saving Account object with user 
+        /// entered initial money amount and interest rate.</summary>
+        /// 
+        /// <returns>An SavingAccount object with a initial amount and interest
+        /// rate set by the user.
+        /// </returns>
+        /// -------------------------------------------------------------------
         private static CheckingAccount CreateCheckingAccount()
         {
 
