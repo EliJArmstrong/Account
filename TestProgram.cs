@@ -5,8 +5,6 @@ namespace Account
 {
     class TestProgram
     {
-        
-
         static void Main(string[] args)
         {
             int currentChoice = 0;
@@ -234,13 +232,13 @@ namespace Account
                         Console.Clear();
                         Console.Write("How much would you like to add to " +
                             "your account: ");
-                        savingsAccount.Credit(int.Parse(Console.ReadLine()));
+                        savingsAccount.Credit(decimal.Parse(Console.ReadLine()));
                         break;
                     case 2:
                         Console.Clear();
                         Console.Write("How much would you like to withdraw " +
                             "to your account: ");
-                        savingsAccount.Debit(int.Parse(Console.ReadLine()));
+                        savingsAccount.Debit(decimal.Parse(Console.ReadLine()));
                         break;
                     case 3:
                         Console.Clear();
@@ -346,13 +344,13 @@ namespace Account
                         Console.Clear();
                         Console.Write("How much would you like to add to " +
                             "your account: ");
-                        checkingAccount.Credit(int.Parse(Console.ReadLine()));
+                        checkingAccount.Credit(decimal.Parse(Console.ReadLine()));
                         break;
                     case 2:
                         Console.Clear();
                         Console.Write("How much would you like to withdraw " +
                             "to your account: ");
-                        checkingAccount.Debit(int.Parse(Console.ReadLine()));
+                        checkingAccount.Debit(decimal.Parse(Console.ReadLine()));
                         break;
                     case 3:
                         Console.Clear();
@@ -455,13 +453,13 @@ namespace Account
                         Console.Clear();
                         Console.Write("How much more would you like to " +
                             "borrow: ");
-                        loan.Credit(int.Parse(Console.ReadLine()));
+                        loan.Credit(decimal.Parse(Console.ReadLine()));
                         break;
                     case 2:
                         Console.Clear();
                         Console.Write("How much would you like to payback " +
                             "to your loan: ");
-                        loan.Debit(int.Parse(Console.ReadLine()));
+                        loan.Debit(decimal.Parse(Console.ReadLine()));
                         break;
                     case 3:
                         Console.Clear();
@@ -495,7 +493,5 @@ namespace Account
             }
 
         }
-
-
     }
 }
