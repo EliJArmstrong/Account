@@ -212,9 +212,15 @@ namespace Account
             return account;
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is the menu for the Account Class.</summary>
+        /// 
+        /// <param name="account">The account that will be affected by the menu
+        /// </param>
+        /// -------------------------------------------------------------------
         private static void RegularAccountMenu(Account account)
         {
-            int currentNumber = 0;
+            int currentNumber = 0; // Hold the users choice from the menu.
 
             while (currentNumber != 4)
             {
@@ -237,11 +243,16 @@ namespace Account
                     currentNumber = 0;
                 }
 
-                AccountOpertaions(account, currentNumber);
+                AccountOperation(account, currentNumber);
             }
         }
 
-        private static void AccountOpertaions( Account account, int currentNumber )
+        /// -------------------------------------------------------------------
+        /// <summary>This method takes in a account and a number and proforms 
+        /// an operation .</summary>
+        ///
+        /// -------------------------------------------------------------------
+        private static void AccountOperation( Account account, int currentNumber )
         {
             switch (currentNumber)
             {
