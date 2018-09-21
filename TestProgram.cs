@@ -305,11 +305,13 @@ namespace Account
         /// -------------------------------------------------------------------
         private static SavingsAccount CreateSavingsAccount()
         {
-            SavingsAccount savingsAccount = null;
+            // The savings account to be returned
+            SavingsAccount savingsAccount = null; 
 
-            decimal initalAmount;
-            decimal interestRate;
-            bool passBool = false;
+            decimal initalAmount;  // The amount to start the account. 
+            decimal interestRate;  // The interest rate for for the account.
+            bool passBool = false; // A check to make sure the user input is vaild.
+
             while (!passBool)
             {
                 try
@@ -348,7 +350,8 @@ namespace Account
         /// -------------------------------------------------------------------
         private static void SavingAccountMenu(SavingsAccount savingsAccount)
         {
-            int currentNumber = 0;
+            int currentNumber = 0;  // Hold the users choice from the menu. 
+
             while (currentNumber != 5)
             {
 
@@ -477,9 +480,17 @@ namespace Account
             return checkingAccount;
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method is the menu for the Checking Account Class.
+        /// </summary>
+        /// 
+        /// <param name="checkingAccount">The account that will be affected by 
+        /// the menu</param>
+        /// -------------------------------------------------------------------
         private static void CheckingAccountMenu(CheckingAccount checkingAccount)
         {
-            int currentNumber = 0;
+            int currentNumber = 0; // 
+
             while (currentNumber != 5)
             {
 
