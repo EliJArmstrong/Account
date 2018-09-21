@@ -11,80 +11,138 @@ namespace Account
 
             Console.WriteLine("This program is to be used for the testing " +
                 "of the Account class and it's derived classes.");
-
-            Console.WriteLine();
+             Console.WriteLine();
 
             while (currentChoice != 5)
             {
-                try
-                {
-                    Console.WriteLine("Menu Choose an account type (1-5):");
-                    Console.WriteLine("1: Regular Account");
-                    Console.WriteLine("2: Savings Account");
-                    Console.WriteLine("3: Checking Account");
-                    Console.WriteLine("4: Loan");
-                    Console.WriteLine("5: Quit Program");
-                    Console.Write("Please enter a number: ");
-
-                    currentChoice = int.Parse(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine();
-                    Console.Clear();
-                    Console.WriteLine("Please enter number.");
-                    Console.WriteLine();
-                    continue;
-                }
-
-                switch (currentChoice)
-                {
-                    case 1:
-                        TestRegularAccount();
-                        break;
-                    case 2:
-                        TestSavingsAccount();
-                        break;
-                    case 3:
-                        TestCheckingAccount();
-                        break;
-                    case 4:
-                        TestLoan();
-                        break;
-                    case 5:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine("Bye Bye");
-                        Console.WriteLine();
-                        break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine($"{currentChoice} is not option" +
-                            $" please try again.");
-                        Console.WriteLine();
-                        break;
-
-                }
+                currentChoice = MainMenu();
+                FunctionCall(currentChoice);
             }
-            
-
         }
 
         public static void TestRegularAccount()
         {
             Account account = null;
-            bool passBool = false;
-            int currentNumber = 0;
+            
+            account = CreateAccount();
+
+            Console.Clear();
+
+            RegularAccountMenu(account);
+        }
+
+        public static void TestSavingsAccount()
+        {
+            SavingsAccount savingsAccount = null;
+
+            Console.Clear();
+
+            savingsAccount = CreateSavingsAccount();
+
+            Console.Clear();
+
+            SavingAccountMenu(savingsAccount);
+
+        }
+
+        public static void TestCheckingAccount()
+        {
+            CheckingAccount checkingAccount = null;
+            
+            Console.Clear();
+
+            checkingAccount = CreateCheckingAccount();
+
+            Console.Clear();
+
+            CheckingAccountMenu(checkingAccount);
+            
+        }
+
+        public static void TestLoan()
+        {
+            Loan loan = null;
+            
+            Console.Clear();
+
+            loan = CreateLoan();
+
+            Console.Clear();
+
+            
+
+        }
+
+        private static int MainMenu()
+        {
+            int returnInt;
+            try
+            {
+                Console.WriteLine("Menu Choose an account type (1-5):");
+                Console.WriteLine("1: Regular Account");
+                Console.WriteLine("2: Savings Account");
+                Console.WriteLine("3: Checking Account");
+                Console.WriteLine("4: Loan");
+                Console.WriteLine("5: Quit Program");
+                Console.Write("Please enter a number: ");
+
+                returnInt = int.Parse(Console.ReadLine());
+            }
+            catch
+            {
+                returnInt = 0;
+            }
+
+            return returnInt;
+        }
+
+        private static void FunctionCall(int functionNumber)
+        {
+            switch (functionNumber)
+            {
+                case 1:
+                    TestRegularAccount();
+                    break;
+                case 2:
+                    TestSavingsAccount();
+                    break;
+                case 3:
+                    TestCheckingAccount();
+                    break;
+                case 4:
+                    TestLoan();
+                    break;
+                case 5:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Bye Bye");
+                    Console.WriteLine();
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Please enter a number between 1-5");
+                    Console.WriteLine();
+                    break;
+
+            }
+        }
+
+        private static Account CreateAccount()
+        {
+
+            Account account = null;
 
             Console.Clear();
             Console.Write("How much currency would you like to have " +
                 "to start the regular account: ");
 
+            bool passBool = false;
+
             while (!passBool)
             {
                 try
                 {
-                    account = new Account(int.Parse(Console.ReadLine()));
+                    account = new Account(decimal.Parse(Console.ReadLine()));
                     passBool = true;
                 }
                 catch (Exception ex)
@@ -97,12 +155,16 @@ namespace Account
                 }
             }
 
+            return account;
+        }
 
-            Console.Clear();
+        private static void RegularAccountMenu(Account account)
+        {
+            int currentNumber = 0;
 
             while (currentNumber != 4)
             {
-                
+
                 Console.WriteLine("What would you like to do with the" +
                     " account:");
                 Console.WriteLine("1: Deposit Money (credit method).");
@@ -118,61 +180,57 @@ namespace Account
                 }
                 catch
                 {
-                    Console.Clear();
-                    Console.WriteLine("Please enter number.");
-                    Console.WriteLine();
-                    continue;
+                    currentNumber = 0;
                 }
 
-                switch (currentNumber)
-                {
-                    case 1:
-                        Console.Clear();
-                        Console.Write("How much would you like to add to" +
-                            " your account: ");
-                        account.Credit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 2:
-                        Console.Clear();
-                        Console.Write("How much would you like to withdraw" +
-                            " to your account: ");
-                        account.Debit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine($"Your current balance" +
-                            $" is: {account.getBalance()}");
-                        Console.WriteLine();
-                        break;
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine("Back to main menu:");
-                        Console.WriteLine();
-                        break;
-                    default:
-                        Console.WriteLine();
-                        Console.Clear();
-                        Console.WriteLine($"{currentNumber} is not option" +
-                            $" please try again.");
-                        Console.WriteLine();
-                        break;
-                }
-
+                AccountOpertaions(account, currentNumber);
             }
         }
 
-        public static void TestSavingsAccount()
+        private static void AccountOpertaions( Account account, int currentNumber )
+        {
+            switch (currentNumber)
+            {
+                case 1:
+                    Console.Clear();
+                    Console.Write("How much would you like to add to" +
+                        " your account: ");
+                    account.Credit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.Write("How much would you like to withdraw" +
+                        " to your account: ");
+                    account.Debit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine($"Your current balance" +
+                        $" is: {account.getBalance()}");
+                    Console.WriteLine();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Back to main menu:");
+                    Console.WriteLine();
+                    break;
+                default:
+                    Console.WriteLine();
+                    Console.Clear();
+                    Console.WriteLine("Please enter a number between 1-4");
+                    Console.WriteLine();
+                    break;
+            }
+        }
+
+        private static SavingsAccount CreateSavingsAccount()
         {
             SavingsAccount savingsAccount = null;
+
             decimal initalAmount;
             decimal interestRate;
-
             bool passBool = false;
-            int currentNumber = 0;
-
-            Console.Clear();
-
             while (!passBool)
             {
                 try
@@ -186,8 +244,8 @@ namespace Account
                         "account: ");
 
                     interestRate = decimal.Parse(Console.ReadLine());
-                   
-                    savingsAccount = 
+
+                    savingsAccount =
                         new SavingsAccount(initalAmount, interestRate);
                     passBool = true;
                 }
@@ -199,12 +257,15 @@ namespace Account
                 }
             }
 
+            return savingsAccount;
+        }
 
-            Console.Clear();
-
+        private static void SavingAccountMenu(SavingsAccount savingsAccount)
+        {
+            int currentNumber = 0;
             while (currentNumber != 5)
             {
-                
+
                 Console.WriteLine("What would you like to do with the " +
                     "saving account:");
                 Console.WriteLine("1: Deposit Money (credit method).");
@@ -220,70 +281,67 @@ namespace Account
                 }
                 catch
                 {
-                    Console.Clear();
-                    Console.WriteLine("Please enter number.");
-                    Console.WriteLine();
-                    continue;
+                    currentNumber = 0;
                 }
 
-                switch (currentNumber)
-                {
-                    case 1:
-                        Console.Clear();
-                        Console.Write("How much would you like to add to " +
-                            "your account: ");
-                        savingsAccount.Credit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 2:
-                        Console.Clear();
-                        Console.Write("How much would you like to withdraw " +
-                            "to your account: ");
-                        savingsAccount.Debit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine($"Your current balance " +
-                            $"is: {savingsAccount.getBalance()}");
-                        Console.WriteLine();
-                        break;
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine($"The calculated interest " +
-                            $"for the account is:" +
-                            $" {savingsAccount.CalculateInterest()}");
-                        Console.WriteLine();
-                        break;
-                    case 5:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine("Back to main menu:");
-                        Console.WriteLine();
-                        break;
-                    default:
-                        Console.WriteLine();
-                        Console.Clear();
-                        Console.WriteLine($"{currentNumber} is not option " +
-                            $"please try again.");
-                        Console.WriteLine();
-                        break;
-                }
+                SavingsAccountOpterations(savingsAccount, currentNumber);
 
             }
         }
 
-        public static void TestCheckingAccount()
+        private static void SavingsAccountOpterations(SavingsAccount savingsAccount, int currentNumber)
         {
-            CheckingAccount checkingAccount = null;
+            switch (currentNumber)
+            {
+                case 1:
+                    Console.Clear();
+                    Console.Write("How much would you like to add to " +
+                        "your account: ");
+                    savingsAccount.Credit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.Write("How much would you like to withdraw " +
+                        "to your account: ");
+                    savingsAccount.Debit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine($"Your current balance " +
+                        $"is: {savingsAccount.getBalance()}");
+                    Console.WriteLine();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine($"The calculated interest " +
+                        $"for the account is:" +
+                        $" {savingsAccount.CalculateInterest()}");
+                    Console.WriteLine();
+                    break;
+                case 5:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Back to main menu:");
+                    Console.WriteLine();
+                    break;
+                default:
+                    Console.WriteLine();
+                    Console.Clear();
+                    Console.WriteLine("Please enter a number between 1-5");
+                    Console.WriteLine();
+                    break;
+            }
+        }
 
+        private static CheckingAccount CreateCheckingAccount()
+        {
+
+            CheckingAccount checkingAccount = null;
             decimal initalAmount;
             decimal feeAmount;
 
             bool passBool = false;
-            int currentNumber = 0;
-
-
-            Console.Clear();
 
             while (!passBool)
             {
@@ -311,9 +369,12 @@ namespace Account
                 }
             }
 
+            return checkingAccount;
+        }
 
-            Console.Clear();
-
+        private static void CheckingAccountMenu(CheckingAccount checkingAccount)
+        {
+            int currentNumber = 0;
             while (currentNumber != 5)
             {
 
@@ -332,69 +393,66 @@ namespace Account
                 }
                 catch
                 {
-                    Console.Clear();
-                    Console.WriteLine("Please enter number.");
-                    Console.WriteLine();
-                    continue;
+                    currentNumber = 0;
                 }
 
-                switch (currentNumber)
-                {
-                    case 1:
-                        Console.Clear();
-                        Console.Write("How much would you like to add to " +
-                            "your account: ");
-                        checkingAccount.Credit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 2:
-                        Console.Clear();
-                        Console.Write("How much would you like to withdraw " +
-                            "to your account: ");
-                        checkingAccount.Debit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine($"Your account balance " +
-                            $"is: {checkingAccount.getBalance()}");
-                        Console.WriteLine();
-                        break;
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine($"The fee " +
-                            $"for the account is:" +
-                            $" {checkingAccount.Fee}");
-                        Console.WriteLine();
-                        break;
-                    case 5:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine("Back to main menu:");
-                        Console.WriteLine();
-                        break;
-                    default:
-                        Console.WriteLine();
-                        Console.Clear();
-                        Console.WriteLine($"{currentNumber} is not option " +
-                            $"please try again.");
-                        Console.WriteLine();
-                        break;
-                }
+                CheckingAccountOpertations(checkingAccount, currentNumber);
 
             }
         }
 
-        public static void TestLoan()
+        private static void CheckingAccountOpertations(CheckingAccount checkingAccount, int currentNumber)
         {
-            Loan loan = null;
+            switch (currentNumber)
+            {
+                case 1:
+                    Console.Clear();
+                    Console.Write("How much would you like to add to " +
+                        "your account: ");
+                    checkingAccount.Credit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.Write("How much would you like to withdraw " +
+                        "to your account: ");
+                    checkingAccount.Debit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine($"Your account balance " +
+                        $"is: {checkingAccount.getBalance()}");
+                    Console.WriteLine();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine($"The fee " +
+                        $"for the account is:" +
+                        $" {checkingAccount.Fee}");
+                    Console.WriteLine();
+                    break;
+                case 5:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Back to main menu:");
+                    Console.WriteLine();
+                    break;
+                default:
+                    Console.WriteLine();
+                    Console.Clear();
+                    Console.WriteLine("Please enter a number between 1-5");
+                    Console.WriteLine();
+                    break;
+            }
+        }
+
+        private static Loan CreateLoan()
+        {
+            Loan loan  = null;
             decimal initalAmount;
             decimal interestRate;
 
             bool passBool = false;
-            int currentNumber = 0;
-
-            Console.Clear();
-
             while (!passBool)
             {
                 try
@@ -419,9 +477,12 @@ namespace Account
                     Console.WriteLine();
                 }
             }
+            return loan;
+        }
 
-
-            Console.Clear();
+        private static void LoanMenu(Loan loan)
+        {
+            int currentNumber = 0;
 
             while (currentNumber != 5)
             {
@@ -429,7 +490,7 @@ namespace Account
                 Console.WriteLine("What would you like to do with the " +
                     "Loan account:");
                 Console.WriteLine("1: Borrow more money.");
-                Console.WriteLine("2: Payback some or all the borrowed ammount.");
+                Console.WriteLine("2: Payback some or all the borrowed amount.");
                 Console.WriteLine("3: See loan balance.");
                 Console.WriteLine("4: See interest sum for the account.");
                 Console.WriteLine("5: Back to main menu.");
@@ -441,57 +502,57 @@ namespace Account
                 }
                 catch
                 {
-                    Console.Clear();
-                    Console.WriteLine("Please enter number.");
-                    Console.WriteLine();
-                    continue;
+                    currentNumber = 0;
                 }
 
-                switch (currentNumber)
-                {
-                    case 1:
-                        Console.Clear();
-                        Console.Write("How much more would you like to " +
-                            "borrow: ");
-                        loan.Credit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 2:
-                        Console.Clear();
-                        Console.Write("How much would you like to payback " +
-                            "to your loan: ");
-                        loan.Debit(decimal.Parse(Console.ReadLine()));
-                        break;
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine($"Your current loan balance " +
-                            $"is: {loan.getBalance()}");
-                        Console.WriteLine();
-                        break;
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine($"The calculated interest " +
-                            $"for the account is:" +
-                            $" {loan.CalculateInterest()}");
-                        Console.WriteLine();
-                        break;
-                    case 5:
-                        Console.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine("Back to main menu:");
-                        Console.WriteLine();
-                        break;
-                    default:
-                        Console.WriteLine();
-                        Console.Clear();
-                        Console.WriteLine($"{currentNumber} is not option " +
-                            $"please try again.");
-                        Console.WriteLine();
-                        break;
-                }
+                LoanOperation(loan, currentNumber);
 
             }
+        }
 
+        private static void LoanOperation(Loan loan, int currentNumber)
+        {
+            switch (currentNumber)
+            {
+                case 1:
+                    Console.Clear();
+                    Console.Write("How much more would you like to " +
+                        "borrow: ");
+                    loan.Credit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.Write("How much would you like to payback " +
+                        "to your loan: ");
+                    loan.Debit(decimal.Parse(Console.ReadLine()));
+                    break;
+                case 3:
+                    Console.Clear();
+                    Console.WriteLine($"Your current loan balance " +
+                        $"is: {loan.getBalance()}");
+                    Console.WriteLine();
+                    break;
+                case 4:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine($"The calculated interest " +
+                        $"for the account is:" +
+                        $" {loan.CalculateInterest()}");
+                    Console.WriteLine();
+                    break;
+                case 5:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Back to main menu:");
+                    Console.WriteLine();
+                    break;
+                default:
+                    Console.WriteLine();
+                    Console.Clear();
+                    Console.WriteLine("Please enter a number between 1-5");
+                    Console.WriteLine();
+                    break;
+            }
         }
     }
 }
