@@ -5,13 +5,6 @@ C:\Users\Eli Armstrong\source\repos\Account\Account\bin\Debug\Account.exe
 C:\Users\Eli Armstrong\source\repos\Account\Account\bin\Debug\Account.pdb
 C:\Users\Eli Armstrong\source\repos\Account\Account\obj\Debug\Account.exe
 C:\Users\Eli Armstrong\source\repos\Account\Account\obj\Debug\Account.pdb
-C:\Users\firef\source\repos\Account\Account\bin\Debug\Account.exe.config
-C:\Users\firef\source\repos\Account\Account\bin\Debug\Account.exe
-C:\Users\firef\source\repos\Account\Account\bin\Debug\Account.pdb
-C:\Users\firef\source\repos\Account\Account\obj\Debug\Account.csprojResolveAssemblyReference.cache
-C:\Users\firef\source\repos\Account\Account\obj\Debug\Account.csproj.CoreCompileInputs.cache
-C:\Users\firef\source\repos\Account\Account\obj\Debug\Account.exe
-C:\Users\firef\source\repos\Account\Account\obj\Debug\Account.pdb
 C:\Users\Eli Armstrong\source\repos\Account\bin\Debug\Account.exe.config
 C:\Users\Eli Armstrong\source\repos\Account\bin\Debug\Account.exe
 C:\Users\Eli Armstrong\source\repos\Account\bin\Debug\Account.pdb
