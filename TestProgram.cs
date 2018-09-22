@@ -4,7 +4,7 @@
 // this assignment.</remarks>
 // <file>TestProgram.cs</file>
 // <date>2018-09-20</date>
-// <summary> This program is to be used for the testing "of the Account class
+// <summary> This program is to be used for the testing of the Account class
 // and it's derived classes. </summary> 
 // <remarks>Time taken to develop, write, test and debug
 // solution. About 3.5 hours. </remarks>
@@ -220,7 +220,7 @@ namespace Account
         /// -------------------------------------------------------------------
         private static void RegularAccountMenu(Account account)
         {
-            int currentNumber = 0; // Hold the users choice from the menu.
+            int currentNumber = 0; // Holds the users choice from the menu.
 
             while (currentNumber != 4)
             {
@@ -309,8 +309,8 @@ namespace Account
             SavingsAccount savingsAccount = null; 
 
             decimal initalAmount;  // The amount to start the account. 
-            decimal interestRate;  // The interest rate for for the account.
-            bool passBool = false; // A check to make sure the user input is vaild.
+            decimal interestRate;  // The interest rate for the account.
+            bool passBool = false; // A check to make sure the user input is valid.
 
             while (!passBool)
             {
@@ -350,7 +350,7 @@ namespace Account
         /// -------------------------------------------------------------------
         private static void SavingAccountMenu(SavingsAccount savingsAccount)
         {
-            int currentNumber = 0;  // Hold the users choice from the menu. 
+            int currentNumber = 0;  // Holds the users choice from the menu. 
 
             while (currentNumber != 5)
             {
@@ -373,7 +373,7 @@ namespace Account
                     currentNumber = 0;
                 }
 
-                SavingsAccountOpterations(savingsAccount, currentNumber);
+                SavingsAccountOperations(savingsAccount, currentNumber);
 
             }
         }
@@ -389,7 +389,7 @@ namespace Account
         /// the SavingsAccountMenu that relates to a operation from the Savings
         /// Account menu.</param>
         /// -------------------------------------------------------------------
-        private static void SavingsAccountOpterations(SavingsAccount savingsAccount, int currentNumber)
+        private static void SavingsAccountOperations(SavingsAccount savingsAccount, int currentNumber)
         {
             switch (currentNumber)
             {
@@ -435,21 +435,21 @@ namespace Account
         }
 
         /// -------------------------------------------------------------------
-        /// <summary>This method creates a Saving Account object with user 
+        /// <summary>This method creates a Checking Account object with user 
         /// entered initial money amount and interest rate.</summary>
         /// 
-        /// <returns>An SavingAccount object with a initial amount and interest
-        /// rate set by the user.
+        /// <returns>An CheckingAccount object with a initial amount and 
+        /// interest rate set by the user.
         /// </returns>
         /// -------------------------------------------------------------------
         private static CheckingAccount CreateCheckingAccount()
         {
-
+            // The checking account to be returned
             CheckingAccount checkingAccount = null;
-            decimal initalAmount;
-            decimal feeAmount;
-
-            bool passBool = false;
+            decimal initalAmount; // Initial money amount for the account
+            decimal feeAmount;    // The fee for using the account
+            // A check to make sure the user input is valid.
+            bool passBool = false; 
 
             while (!passBool)
             {
@@ -489,7 +489,7 @@ namespace Account
         /// -------------------------------------------------------------------
         private static void CheckingAccountMenu(CheckingAccount checkingAccount)
         {
-            int currentNumber = 0; // 
+            int currentNumber = 0; // Holds the users choice from the menu.
 
             while (currentNumber != 5)
             {
@@ -512,12 +512,23 @@ namespace Account
                     currentNumber = 0;
                 }
 
-                CheckingAccountOpertations(checkingAccount, currentNumber);
+                CheckingAccountOperations(checkingAccount, currentNumber);
 
             }
         }
 
-        private static void CheckingAccountOpertations(CheckingAccount checkingAccount, int currentNumber)
+        /// -------------------------------------------------------------------
+        /// <summary>This method takes in a checking account and a number and 
+        /// preforms an operation using the checking account methods</summary>
+        ///
+        /// <param name="checkingAccount">The checking account object to 
+        /// preform the operation on</param>
+        /// 
+        /// <param name="currentNumber">The number revived from 
+        /// the CheckingAccountMenu that relates to a operation from the 
+        /// Checking Account menu.</param>
+        /// -------------------------------------------------------------------
+        private static void CheckingAccountOperations(CheckingAccount checkingAccount, int currentNumber)
         {
             switch (currentNumber)
             {
@@ -562,13 +573,23 @@ namespace Account
             }
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method creates a Loan object with user entered 
+        /// initial borrowed amount and interest rate.</summary>
+        /// 
+        /// <returns>An Loan object with a initial borrowed amount and interest
+        /// rate set by the user.
+        /// </returns>
+        /// -------------------------------------------------------------------
         private static Loan CreateLoan()
         {
+            // The Loan object to be return.
             Loan loan  = null;
-            decimal initalAmount;
-            decimal interestRate;
-
+            decimal initalAmount;  // Initial borrowed amount for the Loan.
+            decimal interestRate;  // The interest rate for the Loan.
+            // A check to make sure the user input is valid.
             bool passBool = false;
+
             while (!passBool)
             {
                 try
@@ -596,9 +617,17 @@ namespace Account
             return loan;
         }
 
+
+        /// -------------------------------------------------------------------
+        /// <summary>This method is the menu for the Loan Class.
+        /// </summary>
+        /// 
+        /// <param name="loan">The loan that will be affected by the menu
+        /// </param>
+        /// -------------------------------------------------------------------
         private static void LoanMenu(Loan loan)
         {
-            int currentNumber = 0;
+            int currentNumber = 0; // Holds the users choice from the menu.
 
             while (currentNumber != 5)
             {
@@ -626,6 +655,17 @@ namespace Account
             }
         }
 
+        /// -------------------------------------------------------------------
+        /// <summary>This method takes in a Loan and a number and 
+        /// preforms an operation using the Loan methods</summary>
+        ///
+        /// <param name="loan">The loan object to preform the operations 
+        /// on</param>
+        /// 
+        /// <param name="currentNumber">The number revived from 
+        /// the LoanMenu that relates to a operation from the Loan menu.
+        /// </param>
+        /// -------------------------------------------------------------------
         private static void LoanOperation(Loan loan, int currentNumber)
         {
             switch (currentNumber)
