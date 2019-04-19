@@ -12,3 +12,10 @@ C:\Users\Eli Armstrong\source\repos\Account\obj\Debug\Account.csprojResolveAssem
 C:\Users\Eli Armstrong\source\repos\Account\obj\Debug\Account.csproj.CoreCompileInputs.cache
 C:\Users\Eli Armstrong\source\repos\Account\obj\Debug\Account.exe
 C:\Users\Eli Armstrong\source\repos\Account\obj\Debug\Account.pdb
+C:\Users\firef\Documents\GitHub\Account\bin\Debug\Account.exe.config
+C:\Users\firef\Documents\GitHub\Account\bin\Debug\Account.exe
+C:\Users\firef\Documents\GitHub\Account\bin\Debug\Account.pdb
+C:\Users\firef\Documents\GitHub\Account\obj\Debug\Account.csprojAssemblyReference.cache
+C:\Users\firef\Documents\GitHub\Account\obj\Debug\Account.csproj.CoreCompileInputs.cache
+C:\Users\firef\Documents\GitHub\Account\obj\Debug\Account.exe
+C:\Users\firef\Documents\GitHub\Account\obj\Debug\Account.pdb
